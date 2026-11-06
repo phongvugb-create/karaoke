@@ -430,14 +430,23 @@ setInterval(() => {
 // REST API ENDPOINTS
 // ==========================================
 
-// Endpoint cung cấp thông tin IP LAN máy tính để tạo QR Code mở trên điện thoại
-app.get('/api/server-info', (_req: Request, res: Response): void => {
+// Endpoint cung cấp thông tin IP LAN máy tính hoặc Domain Render để tạo QR Code mở trên điện thoại
+app.get('/api/server-info', (req: Request, res: Response): void => {
   const localIp = getLocalIpAddress();
+  const host = req.get('host') || '';
+  const protocol = req.protocol === 'https' || req.get('x-forwarded-proto') === 'https' ? 'https' : 'http';
+  
+  // Nếu đang chạy trên cloud (Render/Vercel/Heroku...) hoặc có host thật từ client
+  const isCloudDeployment = host && !host.includes('localhost') && !host.includes('127.0.0.1');
+  const fullUrl = isCloudDeployment 
+    ? `${protocol}://${host}`
+    : `http://${localIp}:${NODE_ENV === 'production' ? PORT : 5173}`;
+
   res.json({
     localIp,
     port: PORT,
-    clientPort: 5173, // Port mặc định của Vite dev
-    fullUrl: `http://${localIp}:${NODE_ENV === 'production' ? PORT : 5173}`
+    clientPort: 5173,
+    fullUrl
   });
 });
 

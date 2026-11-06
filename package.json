@@ -9,6 +9,7 @@
     "client": "vite",
     "build": "tsc -b && vite build",
     "start": "node --import tsx server/index.ts",
+    "build:render": "npm install && npm run build",
     "lint": "oxlint",
     "preview": "vite preview"
   },
