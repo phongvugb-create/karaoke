@@ -1,0 +1,99 @@
+:root {
+  /* Dark Neutral Base with Enhanced Contrast for Mobile & Desktop */
+  --bg-primary: #0b0f19;
+  --bg-main: #0b0f19;
+  --bg-surface: #131b2e;
+  --bg-secondary: #1e293b;
+  --bg-hover: #334155;
+  --bg-card: #131b2e;
+  --bg-card-hover: #1e293b;
+
+  /* Vibrant Signature Brand Accents */
+  --accent-red: #ef4444;
+  --accent-red-hover: #dc2626;
+  --accent-pink: #ec4899;
+  --accent-purple: #8b5cf6;
+  --accent-gradient: linear-gradient(135deg, #ef4444 0%, #f43f5e 100%);
+  --accent-glow: rgba(239, 68, 68, 0.35);
+
+  /* High Contrast Typography */
+  --text-main: #ffffff;
+  --text-sub: #f8fafc;
+  --text-muted: #cbd5e1; /* High contrast: 10:1 ratio on #0b0f19 */
+  --text-dim: #94a3b8;
+
+  /* Borders & Focus */
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-medium: rgba(255, 255, 255, 0.22);
+  --border-focus: #ef4444;
+
+  --danger: #ef4444;
+  --success: #10b981;
+  --warning: #f59e0b;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  min-height: 100vh;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessibility: Focus indicators */
+:focus-visible {
+  outline: 2px solid var(--accent-red) !important;
+  outline-offset: 2px !important;
+}
+
+button, input, a {
+  font-family: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+  touch-action: manipulation;
+  border: none;
+  background: none;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Modern Clean Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 17px;
+  }
+}
