@@ -171,7 +171,10 @@ export const TvModeView: React.FC<TvModeViewProps> = ({
             modestbranding: 1,
             playsinline: 1,
             origin: window.location.origin,
-            enablejsapi: 1
+            enablejsapi: 1,
+            widget_referrer: window.location.origin,
+            iv_load_policy: 3, // Tắt chú thích / pop-up quảng cáo rác trên TV
+            fs: 1
           },
           events: {
             onReady: (event) => {
