@@ -320,28 +320,38 @@ export const TvModeView: React.FC<TvModeViewProps> = ({
                   ) : (
                     <div className="tv-qr-placeholder">Đang tải QR...</div>
                   )}
-                  <div className="tv-qr-label">Quét mã bằng Điện thoại</div>
+                  <div className="tv-qr-label">📱 QUÉT MÃ CHỌN BÀI</div>
+                  <div className="tv-qr-sublabel">(Bật Camera điện thoại soi vào mã này)</div>
                 </div>
 
                 <div className="tv-instruction-text">
-                  <h2 className="tv-room-code-heading">
-                    Mã phòng: <span className="highlight-code">{roomCode}</span>
-                  </h2>
-                  <p className="tv-guide-step">
-                    1. Mọi người mở Camera điện thoại quét mã QR hoặc vào:
-                  </p>
-                  <div className="tv-url-pill">{joinUrl}</div>
-                  <p className="tv-guide-step">
-                    2. Tìm kiếm bất kỳ bài hát karaoke nào trên YouTube.
-                  </p>
-                  <p className="tv-guide-step">
-                    3. Bấm <strong>"+ Thêm vào hàng chờ"</strong> để bài hát tự động phát lên màn hình TV này!
-                  </p>
+                  <div className="tv-easy-steps-container">
+                    <div className="tv-easy-step-row">
+                      <span className="step-num-badge">1</span>
+                      <div className="step-content">
+                        <strong className="step-main-text">Mở Camera điện thoại quét mã QR bên cạnh</strong>
+                        <span className="step-hint-text">Không cần tải app, không cần đăng ký tài khoản</span>
+                      </div>
+                    </div>
+
+                    <div className="tv-easy-step-row">
+                      <span className="step-num-badge">2</span>
+                      <div className="step-content">
+                        <strong className="step-main-text">Bấm vào bất kỳ bài hát nào để đưa lên TV</strong>
+                        <span className="step-hint-text">Hàng trăm bài Bolero, Trữ tình, Nhạc vàng hot nhất đã có sẵn</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="tv-room-code-badge-bar">
+                    <span>MÃ PHÒNG HÁT:</span>
+                    <span className="highlight-code">{roomCode}</span>
+                  </div>
 
                   <div className="tv-sample-action">
                     <button onClick={onSelectSampleSong} className="btn-tv-sample-start">
-                      <Sparkles className="w-5 h-5 text-amber-300" />
-                      <span>Hát ngay bài hát mẫu</span>
+                      <Sparkles className="w-6 h-6 text-amber-300" />
+                      <span>Bấm vào đây để Hát Thử Ngay Một Bài Mẫu</span>
                     </button>
                   </div>
                 </div>
@@ -607,44 +617,81 @@ export const TvModeView: React.FC<TvModeViewProps> = ({
           gap: 0.75rem;
         }
 
-        .tv-room-code-heading {
-          font-size: 2rem;
-          font-weight: 700;
-          color: #ffffff;
+        .tv-qr-sublabel {
+          font-size: 0.75rem;
+          color: #64748b;
+          margin-top: 0.15rem;
+          text-align: center;
+        }
+
+        .tv-easy-steps-container {
+          display: flex;
+          flex-direction: column;
+          gap: 1.25rem;
           margin-bottom: 0.5rem;
+        }
+
+        .tv-easy-step-row {
+          display: flex;
+          align-items: flex-start;
+          gap: 1rem;
+        }
+
+        .step-num-badge {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background: #ef4444;
+          color: white;
+          font-size: 1.35rem;
+          font-weight: 900;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+          box-shadow: 0 4px 14px rgba(239, 68, 68, 0.4);
+        }
+
+        .step-content {
+          display: flex;
+          flex-direction: column;
+          gap: 0.25rem;
+        }
+
+        .step-main-text {
+          font-size: 1.25rem;
+          color: #ffffff;
+          line-height: 1.4;
+        }
+
+        .step-hint-text {
+          font-size: 0.95rem;
+          color: #94a3b8;
+        }
+
+        .tv-room-code-badge-bar {
+          display: flex;
+          align-items: center;
+          gap: 0.85rem;
+          font-size: 1.15rem;
+          font-weight: 700;
+          color: #e2e8f0;
+          margin-top: 0.5rem;
         }
 
         .highlight-code {
           color: #ef4444;
-          font-size: 2.5rem;
+          font-size: 2.2rem;
           font-weight: 900;
           background: rgba(239, 68, 68, 0.15);
-          padding: 0.2rem 0.85rem;
+          padding: 0.15rem 0.85rem;
           border-radius: 12px;
           border: 1px solid rgba(239, 68, 68, 0.4);
           letter-spacing: 0.1em;
         }
 
-        .tv-guide-step {
-          font-size: 1.1rem;
-          color: #e2e8f0;
-          line-height: 1.5;
-        }
-
-        .tv-url-pill {
-          background: rgba(0, 0, 0, 0.5);
-          border: 1px solid rgba(255, 255, 255, 0.2);
-          color: #93c5fd;
-          font-family: monospace;
-          font-size: 1.15rem;
-          padding: 0.65rem 1rem;
-          border-radius: 10px;
-          width: fit-content;
-          font-weight: 600;
-        }
-
         .tv-sample-action {
-          margin-top: 1rem;
+          margin-top: 0.85rem;
         }
 
         .btn-tv-sample-start {
